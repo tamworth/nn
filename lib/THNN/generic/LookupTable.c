@@ -30,8 +30,8 @@ void THNN_(LookupTable_accGradParameters)(
           THIntegerTensor *count,
           THTensor *sorted,
           THIndexTensor *indices,
-          bool scaleGradByFreq,
-          int paddingValue,
+          long scaleGradByFreq,
+          long paddingValue,
           accreal ascale)
 {
   real scale = TH_CONVERT_ACCREAL_TO_REAL(ascale);

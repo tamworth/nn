@@ -76,8 +76,8 @@ void THNN_(SpatialAdaptiveMaxPooling_updateOutput)(
           THTensor *input,
           THTensor *output,
           THIndexTensor *indices,
-          int owidth,
-          int oheight)
+          long owidth,
+          long oheight)
 {
   int dimw = 2;
   int dimh = 1;

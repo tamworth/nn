@@ -2,11 +2,11 @@
 #define TH_GENERIC_FILE "generic/SpatialFullConvolution.c"
 #else
 
-static void THNN_(im2col)(const real* data_im, const int channels,
-      const int height, const int width, const int kernel_h, const int kernel_w,
-      const int pad_h, const int pad_w,
-      const int stride_h, const int stride_w,
-      const int dilation_h, const int dilation_w,
+static void THNN_(im2col)(const real* data_im, const long channels,
+      const long height, const long width, const long kernel_h, const long kernel_w,
+      const long pad_h, const long pad_w,
+      const long stride_h, const long stride_w,
+      const long dilation_h, const long dilation_w,
       real* data_col) {
   const int height_col = (height + 2 * pad_h -
                           (dilation_h * (kernel_h - 1) + 1)) / stride_h + 1;
@@ -29,11 +29,11 @@ static void THNN_(im2col)(const real* data_im, const int channels,
   }
 }
 
-static void THNN_(col2im)(const real* data_col, const int channels,
-      const int height, const int width, const int kernel_h, const int kernel_w,
-      const int pad_h, const int pad_w,
-      const int stride_h, const int stride_w,
-      const int dilation_h, const int dilation_w,
+static void THNN_(col2im)(const real* data_col, const long channels,
+      const long height, const long width, const long kernel_h, const long kernel_w,
+      const long pad_h, const long pad_w,
+      const long stride_h, const long stride_w,
+      const long dilation_h, const long dilation_w,
       real* data_im) {
   memset(data_im, 0, sizeof(real) * height * width * channels);
   const int height_col = (height + 2 * pad_h -
@@ -60,7 +60,7 @@ static void THNN_(col2im)(const real* data_col, const int channels,
 static inline void THNN_(SpatialFullConvolution_shapeCheck)(
 	THTensor *input, THTensor *gradOutput,
 	THTensor *weight, THTensor *bias,
-	int kH, int kW, int dH, int dW, int padH, int padW, int adjH, int adjW) {
+	long kH, long kW, long dH, long dW, long padH, long padW, long adjH, long adjW) {
 
   THArgCheck(kW > 0 && kH > 0, 9,
 	       "kernel size should be greater than zero, but got kH: %d kW: %d", kH, kW);
@@ -119,10 +119,10 @@ void THNN_(SpatialFullConvolution_updateOutput)(
     THTensor *bias,
     THTensor *columns,
     THTensor *ones,
-    int kW, int kH,
-    int dW, int dH,
-    int padW, int padH,
-    int adjW, int adjH)
+    long kW, long kH,
+    long dW, long dH,
+    long padW, long padH,
+    long adjW, long adjH)
 {
   THNN_(SpatialFullConvolution_shapeCheck)
     (input, NULL, weight, bias, kH, kW, dH, dW, padH, padW, adjH, adjW);
@@ -239,10 +239,10 @@ void THNN_(SpatialFullConvolution_updateGradInput)(
     THTensor *gradInput,
     THTensor *weight,
     THTensor *gradColumns,
-    int kW, int kH,
-    int dW, int dH,
-    int padW, int padH,
-    int adjW, int adjH)
+    long kW, long kH,
+    long dW, long dH,
+    long padW, long padH,
+    long adjW, long adjH)
 {
   THNN_(SpatialFullConvolution_shapeCheck)
     (input, gradOutput, weight, NULL, kH, kW, dH, dW, padH, padW, adjH, adjW);
@@ -338,10 +338,10 @@ void THNN_(SpatialFullConvolution_accGradParameters)(
     THTensor *gradBias,
     THTensor *columns,
     THTensor *ones,
-    int kW, int kH,
-    int dW, int dH,
-    int padW, int padH,
-    int adjW, int adjH,
+    long kW, long kH,
+    long dW, long dH,
+    long padW, long padH,
+    long adjW, long adjH,
     accreal scale_)
 {
   real scale = TH_CONVERT_ACCREAL_TO_REAL(scale_);

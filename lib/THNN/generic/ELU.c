@@ -7,7 +7,7 @@ void THNN_(ELU_updateOutput)(
           THTensor *input,
           THTensor *output,
           accreal alpha_,
-          bool inplace)
+          long inplace)
 {
   real alpha = TH_CONVERT_ACCREAL_TO_REAL(alpha_);
   if(inplace) {
@@ -32,7 +32,7 @@ void THNN_(ELU_updateGradInput)(
           THTensor *gradInput,
           THTensor *output,
           accreal alpha_,
-          bool inplace)
+          long inplace)
 {
   real alpha = TH_CONVERT_ACCREAL_TO_REAL(alpha_);
   THNN_CHECK_NELEMENT(input, gradOutput);

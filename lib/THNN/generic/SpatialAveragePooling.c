@@ -4,8 +4,8 @@
 
 static inline void THNN_(SpatialAveragePooling_shapeCheck)(
 	THTensor *input, THTensor *gradOutput,
-	int kH, int kW, int dH, int dW, int padH, int padW,
-	bool ceil_mode) {
+	long  kH, long  kW, long  dH, long  dW, long  padH, long  padW,
+	long ceil_mode) {
 
   THArgCheck(kW > 0 && kH > 0, 5,
              "kernel size should be greater than zero, but got kH: %d kW: %d", kH, kW);
@@ -74,14 +74,14 @@ void THNN_(SpatialAveragePooling_updateOutput)(
           THNNState *state,
           THTensor *input,
           THTensor *output,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH,
-          bool ceil_mode,
-          bool count_include_pad)
+          long  kW,
+          long  kH,
+          long  dW,
+          long  dH,
+          long  padW,
+          long  padH,
+          long ceil_mode,
+          long count_include_pad)
 {
   real *output_data;
   real *input_data;
@@ -201,14 +201,14 @@ void THNN_(SpatialAveragePooling_updateGradInput)(
           THTensor *input,
           THTensor *gradOutput,
           THTensor *gradInput,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH,
-          bool ceil_mode,
-          bool count_include_pad)
+          long  kW,
+          long  kH,
+          long  dW,
+          long  dH,
+          long  padW,
+          long  padH,
+          long ceil_mode,
+          long count_include_pad)
 {
   int dimw = 2;
   int dimh = 1;

@@ -4,8 +4,8 @@
 
 static inline void THNN_(SpatialDilatedMaxPooling_shapeCheck)(
 	THTensor *input, THTensor *gradOutput, THIndexTensor *indices,
-	int kH, int kW, int dH, int dW, int padH, int padW,
-	int dilationH, int dilationW, bool ceil_mode) {
+	long kH, long kW, long dH, long dW, long padH, long padW,
+	long dilationH, long dilationW, long ceil_mode) {
 
   THArgCheck(kW > 0 && kH > 0, 5,
              "kernel size should be greater than zero, but got kH: %d kW: %d", kH, kW);
@@ -87,14 +87,14 @@ static void THNN_(SpatialDilatedMaxPooling_updateOutput_frame)(
           long iheight,
           long owidth,
           long oheight,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH,
-          int dilationW,
-          int dilationH
+          long kW,
+          long kH,
+          long dW,
+          long dH,
+          long padW,
+          long padH,
+          long dilationW,
+          long dilationH
           )
 {
   long k;
@@ -155,15 +155,15 @@ void THNN_(SpatialDilatedMaxPooling_updateOutput)(
           THTensor *input,
           THTensor *output,
           THIndexTensor *indices,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH,
-          int dilationW,
-          int dilationH,
-          bool ceil_mode)
+          long kW,
+          long kH,
+          long dW,
+          long dH,
+          long padW,
+          long padH,
+          long dilationW,
+          long dilationH,
+          long ceil_mode)
 {
 
   int dimw = 2;
@@ -281,8 +281,8 @@ static void THNN_(SpatialDilatedMaxPooling_updateGradInput_frame)(
           long inputHeight,
           long outputWidth,
           long outputHeight,
-          int dW,
-          int dH)
+          long dW,
+          long dH)
 {
   long k;
 #pragma omp parallel for private(k)
@@ -313,15 +313,15 @@ void THNN_(SpatialDilatedMaxPooling_updateGradInput)(
           THTensor *gradOutput,
           THTensor *gradInput,
           THIndexTensor *indices,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH,
-          int dilationW,
-          int dilationH,
-          bool ceil_mode)
+          long kW,
+          long kH,
+          long dW,
+          long dH,
+          long padW,
+          long padH,
+          long dilationW,
+          long dilationH,
+          long ceil_mode)
 {
   int dimw = 2;
   int dimh = 1;

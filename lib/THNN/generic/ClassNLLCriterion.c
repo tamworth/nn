@@ -7,7 +7,7 @@ void THNN_(ClassNLLCriterion_updateOutput)(
           THTensor *input,
           THIndexTensor *target,
           THTensor *output,
-          bool sizeAverage,
+          long sizeAverage,
           THTensor *weights,
           THTensor *total_weight)
 {
@@ -78,7 +78,7 @@ void THNN_(ClassNLLCriterion_updateGradInput)(
           THTensor *input,
           THIndexTensor *target,
           THTensor *gradInput,
-          bool sizeAverage,
+          long sizeAverage,
           THTensor *weights,
           THTensor *total_weight)
 {

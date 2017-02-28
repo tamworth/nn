@@ -7,13 +7,13 @@ void THNN_(SpatialMaxPooling_updateOutput)(
           THTensor *input,
           THTensor *output,
           THIndexTensor *indices,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH,
-          bool ceil_mode)
+          long kW,
+          long kH,
+          long dW,
+          long dH,
+          long padW,
+          long padH,
+          long ceil_mode)
 {
   THNN_(SpatialDilatedMaxPooling_updateOutput)(
       state, input, output, indices,
@@ -27,13 +27,13 @@ void THNN_(SpatialMaxPooling_updateGradInput)(
           THTensor *gradOutput,
           THTensor *gradInput,
           THIndexTensor *indices,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH,
-          bool ceil_mode)
+          long kW,
+          long kH,
+          long dW,
+          long dH,
+          long padW,
+          long padH,
+          long ceil_mode)
 {
   THNN_(SpatialDilatedMaxPooling_updateGradInput)(
       state, input, gradOutput, gradInput, indices,

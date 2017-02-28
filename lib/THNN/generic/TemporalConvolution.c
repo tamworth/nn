@@ -5,9 +5,9 @@
 static inline void THNN_(TemporalConvolution_shapeCheck)(
                          THNNState *state,
                          THTensor *input,
-                         int kW,
-                         int dW,
-                         int *inputFrameSize) {
+                         long kW,
+                         long dW,
+                         long *inputFrameSize) {
 
   THArgCheck(kW > 0, 9,
              "kernel size should be greater than zero, but got kW: %d", kW);
@@ -40,10 +40,10 @@ void THNN_(TemporalConvolution_updateOutput)(
           THTensor *output,
           THTensor *weight,
           THTensor *bias,
-          int kW,
-          int dW,
-          int inputFrameSize,
-          int outputFrameSize)
+          long kW,
+          long dW,
+          long inputFrameSize,
+          long outputFrameSize)
 {
   THTensor *outputWindow, *inputWindow;
   int nInputFrame, nOutputFrame;
@@ -166,8 +166,8 @@ void THNN_(TemporalConvolution_updateGradInput)(
           THTensor *gradOutput,
           THTensor *gradInput,
           THTensor *weight,
-          int kW,
-          int dW)
+          long kW,
+          long dW)
 {
   long nInputFrame;
   long nOutputFrame;
@@ -272,8 +272,8 @@ void THNN_(TemporalConvolution_accGradParameters)(
           THTensor *gradOutput,
           THTensor *gradWeight,
           THTensor *gradBias,
-          int kW,
-          int dW,
+          long kW,
+          long dW,
           accreal scale_)
 {
   real scale = TH_CONVERT_ACCREAL_TO_REAL(scale_);

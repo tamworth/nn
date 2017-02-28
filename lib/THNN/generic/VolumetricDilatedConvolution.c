@@ -5,9 +5,9 @@
 static inline void THNN_(VolumetricDilatedConvolution_shapeCheck)(
                          THTensor *input, THTensor *gradOutput,
                          THTensor *weight, THTensor *bias,
-                         int kT, int kH, int kW, int dT, int dH, int dW,
-                         int padT, int padH, int padW,
-                         int dilationT, int dilationH, int dilationW) {
+                         long kT, long kH, long kW, long dT, long dH, long dW,
+                         long padT, long padH, long padW,
+                         long dilationT, long dilationH, long dilationW) {
   THNN_ARGCHECK(input->nDimension == 4 || input->nDimension == 5, 2, input,
                 "4D or 5D (batch mode) tensor expected for input, but got: %s");
   THNN_ARGCHECK(weight->nDimension == 5, 4, weight,
@@ -69,10 +69,10 @@ void THNN_(VolumetricDilatedConvolution_updateOutput)(
           THTensor *bias,
           THTensor *columns,
           THTensor *ones,
-          int kT, int kW, int kH,
-          int dT, int dW, int dH,
-          int padT, int padW, int padH,
-          int dilationT, int dilationW, int dilationH)
+          long kT, long kW, long kH,
+          long dT, long dW, long dH,
+          long padT, long padW, long padH,
+          long dilationT, long dilationW, long dilationH)
 {
   THNN_(VolumetricDilatedConvolution_shapeCheck)(
         input, NULL, weight, bias,
@@ -195,10 +195,10 @@ void THNN_(VolumetricDilatedConvolution_updateGradInput)(
           THTensor *gradInput,
           THTensor *weight,
           THTensor *gradColumns,
-          int kT, int kW, int kH,
-          int dT, int dW, int dH,
-          int padT, int padW, int padH,
-          int dilationT, int dilationW, int dilationH)
+          long kT, long kW, long kH,
+          long dT, long dW, long dH,
+          long padT, long padW, long padH,
+          long dilationT, long dilationW, long dilationH)
 {
   THNN_(VolumetricDilatedConvolution_shapeCheck)(
         input, gradOutput, weight, NULL,
@@ -295,10 +295,10 @@ void THNN_(VolumetricDilatedConvolution_accGradParameters)(
           THTensor *gradBias,
           THTensor *columns,
           THTensor *ones,
-          int kT, int kW, int kH,
-          int dT, int dW, int dH,
-          int padT, int padW, int padH,
-          int dilationT, int dilationW, int dilationH,
+          long kT, long kW, long kH,
+          long dT, long dW, long dH,
+          long padT, long padW, long padH,
+          long dilationT, long dilationW, long dilationH,
           accreal scale_)
 {
   real scale = TH_CONVERT_ACCREAL_TO_REAL(scale_);

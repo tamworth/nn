@@ -7,7 +7,7 @@ void THNN_(SmoothL1Criterion_updateOutput)(
           THTensor *input,
           THTensor *target,
           THTensor *output,
-          bool sizeAverage)
+          long sizeAverage)
 {
   THNN_CHECK_NELEMENT(input, target);
   THNN_CHECK_DIM_SIZE(output, 1, 0, 1);
@@ -29,7 +29,7 @@ void THNN_(SmoothL1Criterion_updateGradInput)(
           THTensor *input,
           THTensor *target,
           THTensor *gradInput,
-          bool sizeAverage)
+          long sizeAverage)
 {
   THNN_CHECK_NELEMENT(input, target);
   real norm = (sizeAverage ? 1./((real)THTensor_(nElement)(input)) : 1.);

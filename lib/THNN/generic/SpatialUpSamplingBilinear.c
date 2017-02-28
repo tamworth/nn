@@ -7,9 +7,9 @@
 
 static inline void THNN_(SpatialUpSamplingBilinear_shapeCheck)
      (THTensor *input, THTensor *gradOutput,
-      int nBatch, int nChannels,
-      int inputHeight, int inputWidth,
-      int outputHeight, int outputWidth) {
+      long nBatch, long nChannels,
+      long inputHeight, long inputWidth,
+      long outputHeight, long outputWidth) {
   THArgCheck(inputHeight > 0 && inputWidth > 0
 	     && outputHeight > 0 && outputWidth > 0, 2,
 	     "input and output sizes should be greater than 0,"
@@ -32,8 +32,8 @@ void THNN_(SpatialUpSamplingBilinear_updateOutput)(
     THNNState *state,
     THTensor *input,
     THTensor *output,
-    int outputHeight,
-    int outputWidth){
+    long outputHeight,
+    long outputWidth){
 
   int nbatch = THTensor_(size)(input, 0);
   int channels = THTensor_(size)(input, 1);
@@ -105,12 +105,12 @@ void THNN_(SpatialUpSamplingBilinear_updateGradInput)(
     THNNState *state,
     THTensor *gradOutput,
     THTensor *gradInput,
-    int nbatch,
-    int channels,
-    int inputHeight,
-    int inputWidth,
-    int outputHeight,
-    int outputWidth){
+    long nbatch,
+    long channels,
+    long inputHeight,
+    long inputWidth,
+    long outputHeight,
+    long outputWidth){
 
   THNN_(SpatialUpSamplingBilinear_shapeCheck)
     (NULL, gradOutput,

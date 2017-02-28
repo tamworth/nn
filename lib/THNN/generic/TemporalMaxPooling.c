@@ -7,8 +7,8 @@ static inline void THNN_(TemporalMaxPooling_shapeCheck)(
                          THTensor *input,
                          THTensor *gradOutput,
                          THIndexTensor *indices,
-                         int kW,
-                         int dW) {
+                         long kW,
+                         long dW) {
   long niframe;
   long framesize;
   long noframe;
@@ -53,8 +53,8 @@ void THNN_(TemporalMaxPooling_updateOutput)(
           THTensor *input,
           THTensor *output,
           THIndexTensor *indices,
-          int kW,
-          int dW)
+          long kW,
+          long dW)
 {
   long niframe;
   long framesize;
@@ -191,8 +191,8 @@ void THNN_(TemporalMaxPooling_updateGradInput)(
           THTensor *gradOutput,
           THTensor *gradInput,
           THIndexTensor *indices,
-          int kW,
-          int dW)
+          long kW,
+          long dW)
 {
   long niframe;
   int noframe;

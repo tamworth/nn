@@ -6,9 +6,9 @@ static inline void THNN_(VolumetricReplicationPadding_shapeCheck)(
                          THNNState *state,
                          THTensor *input,
                          THTensor *gradOutput,
-                         int pleft, int pright,
-                         int ptop, int pbottom,
-                         int pfront, int pback) {
+                         long pleft, long pright,
+                         long ptop, long pbottom,
+                         long pfront, long pback) {
   int dimw = 3;
   int dimh = 2;
   int dimd = 1;
@@ -67,9 +67,9 @@ static void THNN_(VolumetricReplicationPadding_updateOutput_frame)(
   long nslices,
   long iwidth, long iheight, long idepth,
   long owidth, long oheight, long odepth,
-  int pleft, int pright,
-  int ptop, int pbottom,
-  int pfront, int pback)
+  long pleft, long pright,
+  long ptop, long pbottom,
+  long pfront, long pback)
 {
   int iStartX = fmax(0, -pleft);
   int iStartY = fmax(0, -ptop);
@@ -126,9 +126,9 @@ static void THNN_(VolumetricReplicationPadding_updateOutput_frame)(
 void THNN_(VolumetricReplicationPadding_updateOutput)(THNNState *state,
                                                       THTensor *input,
                                                       THTensor *output,
-                                                      int pleft, int pright,
-                                                      int ptop, int pbottom,
-                                                      int pfront, int pback)
+                                                      long pleft, long pright,
+                                                      long ptop, long pbottom,
+                                                      long pfront, long pback)
 {
   int dimw = 3;
   int dimh = 2;
@@ -216,9 +216,9 @@ static void THNN_(VolumetricReplicationPadding_updateGradInput_frame)(
   long nslices,
   long iwidth, long iheight, long idepth,
   long owidth, long oheight, long odepth,
-  int pleft, int pright,
-  int ptop, int pbottom,
-  int pfront, int pback)
+  long pleft, long pright,
+  long ptop, long pbottom,
+  long pfront, long pback)
 {
   int iStartX = fmax(0, -pleft);
   int iStartY = fmax(0, -ptop);
@@ -276,9 +276,9 @@ void THNN_(VolumetricReplicationPadding_updateGradInput)(THNNState *state,
                                                          THTensor *input,
                                                          THTensor *gradOutput,
                                                          THTensor *gradInput,
-                                                         int pleft, int pright,
-                                                         int ptop, int pbottom,
-                                                         int pfront, int pback)
+                                                         long pleft, long pright,
+                                                         long ptop, long pbottom,
+                                                         long pfront, long pback)
 {
   int dimw = 3;
   int dimh = 2;

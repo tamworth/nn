@@ -6,7 +6,7 @@
 
 void THNN_(BCECriterion_updateOutput)(THNNState *state, THTensor *input,
 				      THTensor *target, THTensor *output,
-				      bool sizeAverage, THTensor *weights)
+				      long sizeAverage, THTensor *weights)
 {
   THNN_CHECK_NELEMENT(input, target);
   THNN_CHECK_NELEMENT(input, weights);
@@ -36,7 +36,7 @@ void THNN_(BCECriterion_updateOutput)(THNNState *state, THTensor *input,
 
 void THNN_(BCECriterion_updateGradInput)(THNNState *state, THTensor *input,
 					 THTensor *target, THTensor *gradInput,
-					 bool sizeAverage, THTensor *weights)
+					 long sizeAverage, THTensor *weights)
 {
   THNN_CHECK_NELEMENT(input, target);
   THNN_CHECK_NELEMENT(input, weights);

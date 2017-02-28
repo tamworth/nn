@@ -32,7 +32,7 @@ void THNN_(SpatialClassNLLCriterion_updateOutput)(
           THTensor *input,
           THIndexTensor *target,
           THTensor *output,
-          bool sizeAverage,
+          long sizeAverage,
           THTensor *weights,
           THTensor *total_weight)
 {
@@ -82,7 +82,7 @@ void THNN_(SpatialClassNLLCriterion_updateGradInput)(
           THTensor *input,
           THIndexTensor *target,
           THTensor *gradInput,
-          bool sizeAverage,
+          long sizeAverage,
           THTensor *weights,
           THTensor *total_weight)
 {

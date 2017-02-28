@@ -7,8 +7,8 @@ static void THNN_(SpatialReplicationPadding_updateOutput_frame)(
   long nslices,
   long iwidth, long iheight,
   long owidth, long oheight,
-  int pad_l, int pad_r,
-  int pad_t, int pad_b)
+  long pad_l, long pad_r,
+  long pad_t, long pad_b)
 {
   int iStartX = fmax(0, -pad_l);
   int iStartY = fmax(0, -pad_t);
@@ -51,8 +51,8 @@ static void THNN_(SpatialReplicationPadding_updateOutput_frame)(
 void THNN_(SpatialReplicationPadding_updateOutput)(THNNState *state,
                                                          THTensor *input,
                                                          THTensor *output,
-                                                         int pad_l, int pad_r,
-                                                         int pad_t, int pad_b)
+                                                         long pad_l, long pad_r,
+                                                         long pad_t, long pad_b)
 {
   int dimw = 2;
   int dimh = 1;
@@ -140,8 +140,8 @@ static void THNN_(SpatialReplicationPadding_updateGradInput_frame)(
   long nslices,
   long iwidth, long iheight,
   long owidth, long oheight,
-  int pad_l, int pad_r,
-  int pad_t, int pad_b)
+  long pad_l, long pad_r,
+  long pad_t, long pad_b)
 {
   int iStartX = fmax(0, -pad_l);
   int iStartY = fmax(0, -pad_t);
@@ -185,8 +185,8 @@ void THNN_(SpatialReplicationPadding_updateGradInput)(THNNState *state,
                                                       THTensor *input,
                                                       THTensor *gradOutput,
                                                       THTensor *gradInput,
-                                                      int pad_l, int pad_r,
-                                                      int pad_t, int pad_b)
+                                                      long pad_l, long pad_r,
+                                                      long pad_t, long pad_b)
 {
   int dimw = 2;
   int dimh = 1;

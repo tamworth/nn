@@ -9,8 +9,8 @@ void THNN_(RReLU_updateOutput)(
           THTensor *noise,
           accreal lower_,
           accreal upper_,
-          bool train,
-          bool inplace,
+          long train,
+          long inplace,
           THGenerator *generator)
 {
   real lower = TH_CONVERT_ACCREAL_TO_REAL(lower_);
@@ -85,8 +85,8 @@ void THNN_(RReLU_updateGradInput)(
           THTensor *noise,
           accreal lower_,
           accreal upper_,
-          bool train,
-          bool inplace)
+          long train,
+          long inplace)
 {
   real lower = TH_CONVERT_ACCREAL_TO_REAL(lower_);
   real upper = TH_CONVERT_ACCREAL_TO_REAL(upper_);

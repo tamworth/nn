@@ -6,12 +6,12 @@ static inline void THNN_(VolumetricAveragePooling_shapeCheck)(
                          THNNState *state,
                          THTensor *input,
                          THTensor *gradOutput,
-                         int kT,
-                         int kW,
-                         int kH,
-                         int dT,
-                         int dW,
-                         int dH) {
+                         long kT,
+                         long kW,
+                         long kH,
+                         long dT,
+                         long dW,
+                         long dH) {
   long nslices;
   long itime;
   long iheight;
@@ -76,12 +76,12 @@ static void THNN_(VolumetricAveragePooling_updateOutput_frame)(
           long otime,
           long owidth,
           long oheight,
-          int kT,
-          int kW,
-          int kH,
-          int dT,
-          int dW,
-          int dH)
+          long kT,
+          long kW,
+          long kH,
+          long dT,
+          long dW,
+          long dH)
 {
   long k;
 #pragma omp parallel for private(k)
@@ -128,12 +128,12 @@ void THNN_(VolumetricAveragePooling_updateOutput)(
           THNNState *state,
           THTensor *input,
           THTensor *output,
-          int kT,
-          int kW,
-          int kH,
-          int dT,
-          int dW,
-          int dH)
+          long kT,
+          long kW,
+          long kH,
+          long dT,
+          long dW,
+          long dH)
 {
   long nslices;
   long itime;
@@ -231,12 +231,12 @@ static void THNN_(VolumetricAveragePooling_updateGradInput_frame)(
           long otime,
           long owidth,
           long oheight,
-          int kT,
-          int kW,
-          int kH,
-          int dT,
-          int dW,
-          int dH)
+          long kT,
+          long kW,
+          long kH,
+          long dT,
+          long dW,
+          long dH)
 {
   long k;
 #pragma omp parallel for private(k)
@@ -280,12 +280,12 @@ void THNN_(VolumetricAveragePooling_updateGradInput)(
           THTensor *input,
           THTensor *gradOutput,
           THTensor *gradInput,
-          int kT,
-          int kW,
-          int kH,
-          int dT,
-          int dW,
-          int dH)
+          long kT,
+          long kW,
+          long kH,
+          long dT,
+          long dW,
+          long dH)
 {
   int nslices;
   int itime;

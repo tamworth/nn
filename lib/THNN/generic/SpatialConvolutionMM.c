@@ -5,7 +5,7 @@
 static inline void THNN_(SpatialConvolutionMM_shapeCheck)(
 	THTensor *input, THTensor *gradOutput,
 	THTensor *weight, THTensor *bias,
-	int kH, int kW, int dH, int dW, int padH, int padW) {
+	long kH, long kW, long dH, long dW, long padH, long padW) {
 
   THArgCheck(kW > 0 && kH > 0, 9,
 	       "kernel size should be greater than zero, but got kH: %d kW: %d", kH, kW);
@@ -59,12 +59,12 @@ static void THNN_(SpatialConvolutionMM_updateOutput_frame)(
           THTensor *weight,
           THTensor *bias,
           THTensor *finput,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH,
+          long kW,
+          long kH,
+          long dW,
+          long dH,
+          long padW,
+          long padH,
           long nInputPlane,
           long inputWidth,
           long inputHeight,
@@ -104,12 +104,12 @@ void THNN_(SpatialConvolutionMM_updateOutput)(
           THTensor *bias,
           THTensor *finput,
           THTensor *fgradInput,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH)
+          long kW,
+          long kH,
+          long dW,
+          long dH,
+          long padW,
+          long padH)
 {
   int freeWeight = 0;
 
@@ -191,12 +191,12 @@ static void THNN_(SpatialConvolutionMM_updateGradInput_frame)(
           THTensor *gradOutput,
           THTensor *weight,
           THTensor *fgradInput,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH)
+          long kW,
+          long kH,
+          long dW,
+          long dH,
+          long padW,
+          long padH)
 {
   THTensor *gradOutput2d = THTensor_(newWithStorage2d)
     (gradOutput->storage, gradOutput->storageOffset,
@@ -221,12 +221,12 @@ void THNN_(SpatialConvolutionMM_updateGradInput)(
           THTensor *weight,
           THTensor *finput,
           THTensor *fgradInput,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH)
+          long kW,
+          long kH,
+          long dW,
+          long dH,
+          long padW,
+          long padH)
 {
   int freeWeight = 0;
 
@@ -330,12 +330,12 @@ void THNN_(SpatialConvolutionMM_accGradParameters)(
           THTensor *gradBias,
           THTensor *finput,
           THTensor *fgradInput,
-          int kW,
-          int kH,
-          int dW,
-          int dH,
-          int padW,
-          int padH,
+          long kW,
+          long kH,
+          long dW,
+          long dH,
+          long padW,
+          long padH,
           accreal scale_)
 {
   real scale = TH_CONVERT_ACCREAL_TO_REAL(scale_);

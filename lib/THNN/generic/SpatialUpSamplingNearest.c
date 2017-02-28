@@ -5,7 +5,7 @@
 
 static inline void THNN_(SpatialUpSamplingNearest_shapeCheck)
      (THTensor *input, THTensor *gradOutput,
-      int scale_factor) {
+      long scale_factor) {
   THArgCheck(input != NULL, 2, "4D input tensor expected but got NULL");
   THArgCheck(scale_factor > 1, 4,
 	     "scale_factor must be greater than 1, but got: %d", scale_factor);
@@ -42,7 +42,7 @@ void THNN_(SpatialUpSamplingNearest_updateOutput)(
     THNNState *state,
     THTensor *input,
     THTensor *output,
-    int scale_factor)
+    long scale_factor)
 {
   THNN_(SpatialUpSamplingNearest_shapeCheck)(input, NULL, scale_factor);
   int inputHeight = THTensor_(size)(input, input->nDimension-2);
@@ -125,7 +125,7 @@ void THNN_(SpatialUpSamplingNearest_updateGradInput)(
     THTensor *input,
     THTensor *gradOutput,
     THTensor *gradInput,
-    int scale_factor)
+    long scale_factor)
 {
   THNN_(SpatialUpSamplingNearest_shapeCheck)(input, gradOutput, scale_factor);
   THTensor_(resizeAs)(gradInput, input);

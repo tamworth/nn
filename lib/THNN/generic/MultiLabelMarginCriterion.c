@@ -9,7 +9,7 @@ void THNN_(MultiLabelMarginCriterion_updateOutput)(
           THIndexTensor *target,
           THTensor *output,
           THTensor *isTarget,
-          bool sizeAverage)
+          long sizeAverage)
 {
   real *input_data, *isTarget_data;
   THIndex_t *target_data;
@@ -96,7 +96,7 @@ void THNN_(MultiLabelMarginCriterion_updateGradInput)(
           THIndexTensor *target,
           THTensor *gradInput,
           THTensor *isTarget,
-          bool sizeAverage)
+          long sizeAverage)
 {
   real *input_data;
   real *gradInput_data;

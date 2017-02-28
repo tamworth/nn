@@ -4,11 +4,11 @@
 
 static void THNN_(SpatialMaxUnpooling_updateOutput_frame)(real *input_p, real *output_p,
                                                       THIndex_t *ind_p,
-                                                      int nslices,
-                                                      int iwidth, int iheight,
-                                                      int owidth, int oheight)
+                                                      long nslices,
+                                                      long iwidth, long iheight,
+                                                      long owidth, long oheight)
 {
-  int k;
+  long k;
   int has_error = 0;
   THIndex_t error_index;
 #pragma omp parallel for private(k)
@@ -18,7 +18,7 @@ static void THNN_(SpatialMaxUnpooling_updateOutput_frame)(real *input_p, real *o
     real *input_p_k = input_p + k*iwidth*iheight;
     THIndex_t *ind_p_k = ind_p + k*iwidth*iheight;
 
-    int i, j;
+    long i, j;
     THIndex_t maxp;
     for(i = 0; i < iheight; i++)
     {
@@ -48,7 +48,7 @@ void THNN_(SpatialMaxUnpooling_updateOutput)(
     THTensor *input,
     THTensor *output,
     THIndexTensor *indices,
-    int owidth, int oheight)
+    long owidth, long oheight)
 {
   int dimw = 2;
   int dimh = 1;
@@ -127,11 +127,11 @@ void THNN_(SpatialMaxUnpooling_updateOutput)(
 
 static void THNN_(SpatialMaxUnpooling_updateGradInput_frame)(real *gradInput_p, real *gradOutput_p,
                                                          THIndex_t *ind_p,
-                                                         int nslices,
-                                                         int iwidth, int iheight,
-                                                         int owidth, int oheight)
+                                                         long nslices,
+                                                         long iwidth, long iheight,
+                                                         long owidth, long oheight)
 {
-  int k;
+  long k;
 #pragma omp parallel for private(k)
   for (k = 0; k < nslices; k++)
   {
@@ -139,7 +139,7 @@ static void THNN_(SpatialMaxUnpooling_updateGradInput_frame)(real *gradInput_p, 
     real *gradOutput_p_k = gradOutput_p + k*owidth*oheight;
     THIndex_t *ind_p_k = ind_p + k*iwidth*iheight;
 
-    int i, j;
+    long i, j;
     THIndex_t maxp;
     for(i = 0; i < iheight; i++)
     {
@@ -161,7 +161,7 @@ void THNN_(SpatialMaxUnpooling_updateGradInput)(
     THTensor *gradOutput,
     THTensor *gradInput,
     THIndexTensor *indices,
-    int owidth, int oheight)
+    long owidth, long oheight)
 {
   int dimw = 2;
   int dimh = 1;

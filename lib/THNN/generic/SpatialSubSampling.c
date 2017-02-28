@@ -6,7 +6,7 @@ static inline void THNN_(SpatialSubSampling_shapeCheck)(
                          THTensor *input,
                          THTensor *gradOutput,
                          THTensor *weight,
-                         int kW, int kH) {
+                         long kW, long kH) {
   int ndims = input->nDimension;
   THNN_ARGCHECK(input->nDimension == 3 || input->nDimension == 4, 2, input,
                   "3D or 4D input tensor expected but got: %s");
@@ -37,8 +37,8 @@ void THNN_(SpatialSubSampling_updateOutput)(
     THTensor *output,
     THTensor *weight,
     THTensor *bias,
-    int kW, int kH,
-    int dW, int dH)
+    long kW, long kH,
+    long dW, long dH)
 {
 
   real *weight_data = THTensor_(data)(weight);
@@ -128,8 +128,8 @@ void THNN_(SpatialSubSampling_updateGradInput)(
     THTensor *gradOutput,
     THTensor *gradInput,
     THTensor *weight,
-    int kW, int kH,
-    int dW, int dH)
+    long kW, long kH,
+    long dW, long dH)
 {
   THNN_(SpatialSubSampling_shapeCheck)(input, gradOutput, weight, kW, kH);
 
@@ -212,8 +212,8 @@ void THNN_(SpatialSubSampling_accGradParameters)(
     THTensor *gradOutput,
     THTensor *gradWeight,
     THTensor *gradBias,
-    int kW, int kH,
-    int dW, int dH,
+    long kW, long kH,
+    long dW, long dH,
     accreal scale_)
 {
   real scale = TH_CONVERT_ACCREAL_TO_REAL(scale_);

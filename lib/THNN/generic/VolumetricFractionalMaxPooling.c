@@ -6,7 +6,7 @@ static long* THNN_(VolumetricFractionalMaxPooling_generateIntervals)(
   real sample,
   long inputSize,
   long outputSize,
-  int poolSize) {
+  long poolSize) {
   real alpha = (real) (inputSize - poolSize) / (real) (outputSize - 1);
   long* sequence = (long*) THAlloc(sizeof(long) * outputSize);
 
@@ -28,7 +28,7 @@ static void THNN_(VolumetricFractionalMaxPooling_updateOutput_frame)(
   long numPlanes,
   long inputT, long inputW, long inputH,
   long outputT, long outputW, long outputH,
-  int poolSizeT, int poolSizeW, int poolSizeH) {
+  long poolSizeT, long poolSizeW, long poolSizeH) {
   long plane;
 #pragma omp parallel for private(plane)
   for (plane = 0; plane < numPlanes; ++plane) {
@@ -103,8 +103,8 @@ void THNN_(VolumetricFractionalMaxPooling_updateOutput)(
     THNNState *state,
     THTensor *input,
     THTensor *output,
-    int outputT, int outputW, int outputH,
-    int poolSizeT, int poolSizeW, int poolSizeH,
+    long outputT, long outputW, long outputH,
+    long poolSizeT, long poolSizeW, long poolSizeH,
     THIndexTensor *indices,
     THTensor *randomSamples) {
 
@@ -214,8 +214,8 @@ void THNN_(VolumetricFractionalMaxPooling_updateGradInput)(
     THTensor *input,
     THTensor *gradOutput,
     THTensor *gradInput,
-    int outputT, int outputW, int outputH,
-    int poolSizeT, int poolSizeW, int poolSizeH,
+    long outputT, long outputW, long outputH,
+    long poolSizeT, long poolSizeW, long poolSizeH,
     THIndexTensor *indices) {
 
   long numBatch = 1;

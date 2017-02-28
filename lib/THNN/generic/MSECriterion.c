@@ -7,7 +7,7 @@ void THNN_(MSECriterion_updateOutput)(
           THTensor *input,
           THTensor *target,
           THTensor *output,
-          bool sizeAverage)
+          long sizeAverage)
 {
   THNN_CHECK_NELEMENT(input, target);
   THNN_CHECK_DIM_SIZE(output, 1, 0, 1);
@@ -30,7 +30,7 @@ void THNN_(MSECriterion_updateGradInput)(
           THTensor *input,
           THTensor *target,
           THTensor *gradInput,
-          bool sizeAverage)
+          long sizeAverage)
 {
   THNN_CHECK_NELEMENT(input, target);
   

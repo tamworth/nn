@@ -7,7 +7,7 @@ void THNN_(BatchNormalization_updateOutput)(
   THTensor *weight, THTensor *bias,
   THTensor *running_mean, THTensor *running_var,
   THTensor *save_mean, THTensor *save_std,
-  bool train, double momentum, double eps)
+  long train, double momentum, double eps)
 {
   THTensor_(resizeAs)(output, input);
   long nInput = THTensor_(size)(input, 1);
@@ -70,7 +70,7 @@ void THNN_(BatchNormalization_backward)(
   THTensor *gradWeight, THTensor *gradBias, THTensor *weight,
   THTensor *running_mean, THTensor *running_var,
   THTensor *save_mean, THTensor *save_std,
-  bool train, double scale, double eps)
+  long train, double scale, double eps)
 {
   THNN_CHECK_SHAPE(input, gradOutput);
   long nInput = THTensor_(size)(input, 1);

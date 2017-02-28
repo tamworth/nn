@@ -7,7 +7,7 @@ void THNN_(MarginCriterion_updateOutput)(
           THTensor *input,
           THTensor *target,
           THTensor *output,
-          bool sizeAverage,
+          long sizeAverage,
           accreal margin_)
 {
   real margin = TH_CONVERT_ACCREAL_TO_REAL(margin_);
@@ -31,7 +31,7 @@ void THNN_(MarginCriterion_updateGradInput)(
           THTensor *input,
           THTensor *target,
           THTensor *gradInput,
-          bool sizeAverage,
+          long sizeAverage,
           accreal margin_)
 {
   real margin = TH_CONVERT_ACCREAL_TO_REAL(margin_);

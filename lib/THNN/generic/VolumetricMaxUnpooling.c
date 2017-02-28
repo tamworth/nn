@@ -7,15 +7,15 @@ static inline void THNN_(VolumetricMaxUnpooling_shapeCheck)(
                          THTensor *input,
                          THTensor *gradOutput,
                          THIndexTensor *indices,
-                         int oT,
-                         int oW,
-                         int oH,
-                         int dT,
-                         int dW,
-                         int dH,
-                         int pT,
-                         int pW,
-                         int pH)
+                         long oT,
+                         long oW,
+                         long oH,
+                         long dT,
+                         long dW,
+                         long dH,
+                         long pT,
+                         long pW,
+                         long pH)
 {
   THNN_ARGCHECK(input->nDimension == 4 || input->nDimension == 5, 2, input,
                 "4D or 5D (batch mode) tensor expected for input, but got: %s");
@@ -57,19 +57,19 @@ static void THNN_(VolumetricMaxUnpooling_updateOutput_frame)(
           real *input_p,
           real *output_p,
           THIndex_t *ind_p,
-          int nslices,
-          int iT,
-          int iW,
-          int iH,
-          int oT,
-          int oW,
-          int oH,
-          int dT,
-          int dW,
-          int dH,
-          int pT,
-          int pW,
-          int pH)
+          long nslices,
+          long iT,
+          long iW,
+          long iH,
+          long oT,
+          long oW,
+          long oH,
+          long dT,
+          long dW,
+          long dH,
+          long pT,
+          long pW,
+          long pH)
 {
   int k;
   int has_error = 0;
@@ -124,15 +124,15 @@ void THNN_(VolumetricMaxUnpooling_updateOutput)(
           THTensor *input,
           THTensor *output,
           THIndexTensor *indices,
-          int oT,
-          int oW,
-          int oH,
-          int dT,
-          int dW,
-          int dH,
-          int pT,
-          int pW,
-          int pH)
+          long oT,
+          long oW,
+          long oH,
+          long dT,
+          long dW,
+          long dH,
+          long pT,
+          long pW,
+          long pH)
 {
   int dimw = 3;
   int dimh = 2;
@@ -222,19 +222,19 @@ static void THNN_(VolumetricMaxUnpooling_updateGradInput_frame)(
           real *gradInput_p,
           real *gradOutput_p,
           THIndex_t *ind_p,
-          int nslices,
-          int iT,
-          int iW,
-          int iH,
-          int oT,
-          int oW,
-          int oH,
-          int dT,
-          int dW,
-          int dH,
-          int pT,
-          int pW,
-          int pH)
+          long nslices,
+          long iT,
+          long iW,
+          long iH,
+          long oT,
+          long oW,
+          long oH,
+          long dT,
+          long dW,
+          long dH,
+          long pT,
+          long pW,
+          long pH)
 {
   int k;
 #pragma omp parallel for private(k)
@@ -280,15 +280,15 @@ void THNN_(VolumetricMaxUnpooling_updateGradInput)(
           THTensor *gradOutput,
           THTensor *gradInput,
           THIndexTensor *indices,
-          int oT,
-          int oW,
-          int oH,
-          int dT,
-          int dW,
-          int dH,
-          int pT,
-          int pW,
-          int pH)
+          long oT,
+          long oW,
+          long oH,
+          long dT,
+          long dW,
+          long dH,
+          long pT,
+          long pW,
+          long pH)
 {
   int dimw = 3;
   int dimh = 2;

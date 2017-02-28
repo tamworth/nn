@@ -4,8 +4,8 @@
 
 void THNN_(SpatialConvolutionMap_updateOutput)(
   THNNState *state, THTensor *input, THTensor *output, THTensor *weight, THTensor *bias,
-  THTensor *connTable, int nInputPlane, int nOutputPlane,
-  int dW, int dH)
+  THTensor *connTable, long nInputPlane, long nOutputPlane,
+  long dW, long dH)
 {
   THArgCheck(
     weight != NULL && weight->nDimension == 3
@@ -100,8 +100,8 @@ void THNN_(SpatialConvolutionMap_updateOutput)(
 
 void THNN_(SpatialConvolutionMap_updateGradInput)(
   THNNState *state, THTensor *input, THTensor *gradOutput, THTensor *gradInput, THTensor *weight, THTensor *bias,
-  THTensor *connTable, int nInputPlane, int nOutputPlane,
-  int dW, int dH)
+  THTensor *connTable, long nInputPlane, long nOutputPlane,
+  long dW, long dH)
 {
   THArgCheck(
     weight != NULL && weight->nDimension == 3
@@ -181,9 +181,9 @@ void THNN_(SpatialConvolutionMap_accGradParameters)(
           THTensor *gradWeight,
           THTensor *gradBias,
           THTensor *connTable,
-          int nInputPlane,
-          int nOutputPlane,
-          int dW, int dH,
+          long nInputPlane,
+          long nOutputPlane,
+          long dW, long dH,
           accreal scale_)
 {
   real scale = TH_CONVERT_ACCREAL_TO_REAL(scale_);

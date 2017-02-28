@@ -65,8 +65,8 @@ void THNN_(SpatialAdaptiveAveragePooling_updateOutput)(
           THNNState *state,
           THTensor *input,
           THTensor *output,
-          int owidth,
-          int oheight)
+          long owidth,
+          long oheight)
 {
   int dimw = 2;
   int dimh = 1;

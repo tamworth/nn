@@ -6,9 +6,9 @@ static inline void THNN_(TemporalSubSampling_shapeCheck)(
                          THNNState *state,
                          THTensor *input,
                          THTensor *gradOutput,
-                         int kW,
-                         int dW,
-                         int *inputFrameSize) {
+                         long kW,
+                         long dW,
+                         long *inputFrameSize) {
   int nInputFrame, nOutputFrame;
 
   THArgCheck(kW > 0, 6,
@@ -44,9 +44,9 @@ void THNN_(TemporalSubSampling_updateOutput)(
           THTensor *output,
           THTensor *weight,
           THTensor *bias,
-          int kW,
-          int dW,
-          int inputFrameSize)
+          long kW,
+          long dW,
+          long inputFrameSize)
 {
   THTensor *outputFrame, *inputWindow;
   int nInputFrame, nOutputFrame;
@@ -83,8 +83,8 @@ void THNN_(TemporalSubSampling_updateGradInput)(
           THTensor *gradOutput,
           THTensor *gradInput,
           THTensor *weight,
-          int kW,
-          int dW)
+          long kW,
+          long dW)
 {
 
   THTensor *gradOutputFrame;
@@ -122,8 +122,8 @@ void THNN_(TemporalSubSampling_accGradParameters)(
           THTensor *gradOutput,
           THTensor *gradWeight,
           THTensor *gradBias,
-          int kW,
-          int dW,
+          long kW,
+          long dW,
           accreal scale_)
 {
   real scale = TH_CONVERT_ACCREAL_TO_REAL(scale_);
